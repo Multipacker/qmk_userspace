@@ -3,6 +3,8 @@
 
 #include QMK_KEYBOARD_H
 
+#include "sendstring_us_international.h"
+
 enum {
     L_Base,
     L_Fun,
@@ -43,8 +45,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       * │   │   │   │   │   │       │\| │1! │2@ │3# │`~ │
       * └───┴───┴───┴───┴───┘       └───┴───┴───┴───┴───┘
       *           ┌───┐                   ┌───┐
-      *           │Hld├───┐           ┌───┤   │
-      *           └───┤   ├───┐   ┌───┤ 0)├───┘
+      *           │   ├───┐           ┌───┤   │
+      *           └───┤Hld├───┐   ┌───┤0) ├───┘
       *               └───┤   │   │   ├───┘
       *                   └───┘   └───┘
       */
@@ -65,8 +67,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       * └───┴───┴───┴───┴───┘       └───┴───┴───┴───┴───┘
       *           ┌───┐                   ┌───┐
       *           │   ├───┐           ┌───┤Mid│
-      *           └───┤Hld├───┐   ┌───┤Lft├───┘
-      *               └───┤   │   │Rgt├───┘
+      *           └───┤   ├───┐   ┌───┤Lft├───┘
+      *               └───┤Hld│   │Rgt├───┘
       *                   └───┘   └───┘
       */
     [L_Mouse] = LAYOUT_split_3x6_3(
@@ -85,9 +87,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       * │   │   │   │   │   │       │Hme│Dwn│Up │End│   │
       * └───┴───┴───┴───┴───┘       └───┴───┴───┴───┴───┘
       *           ┌───┐                   ┌───┐
-      *           │   ├───┐           ┌───┤   │
+      *           │Hld├───┐           ┌───┤   │
       *           └───┤   ├───┐   ┌───┤   ├───┘
-      *               └───┤Hld│   │   ├───┘
+      *               └───┤   │   │   ├───┘
       *                   └───┘   └───┘
       */
     [L_Nav] = LAYOUT_split_3x6_3(
@@ -99,11 +101,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
      /* Function
       * ┌───┬───┬───┬───┬───┐       ┌───┬───┬───┬───┬───┐
-      * │F1 │F2 │F3 │F4 │   │       │   │   │   │   │MKE│
+      * │F1 │F2 │F3 │F4 │ Å │       │   │   │   │   │MKE│
       * ├───┼───┼───┼───┼───┤       ├───┼───┼───┼───┼───┤
-      * │F5 │F6 │F7 │F8 │   │       │   │Ctl│Alt│GUI│Sft│
+      * │F5 │F6 │F7 │F8 │ Ä │       │   │Ctl│Alt│GUI│Sft│
       * ├───┼───┼───┼───┼───┤       ├───┼───┼───┼───┼───┤
-      * │F9 │F10│F11│F12│   │       │   │   │   │   │   │
+      * │F9 │F10│F11│F12│ Ö │       │   │   │   │   │   │
       * └───┴───┴───┴───┴───┘       └───┴───┴───┴───┴───┘
       *           ┌───┐                   ┌───┐
       *           │   ├───┐           ┌───┤Hld│
@@ -112,9 +114,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       *                   └───┘   └───┘
       */
     [L_Fun] = LAYOUT_split_3x6_3(
-        XXXXXXX,   KC_F1,   KC_F2,   KC_F3,   KC_F4, XXXXXXX,                            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, QK_MAKE, XXXXXXX,
-        XXXXXXX,   KC_F5,   KC_F6,   KC_F7,   KC_F8, XXXXXXX,                            XXXXXXX, KC_RCTL, KC_RALT, KC_RGUI, KC_RSFT, XXXXXXX,
-        XXXXXXX,   KC_F9,  KC_F10,  KC_F11,  KC_F12, XXXXXXX,                            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX,   KC_F1,   KC_F2,   KC_F3,   KC_F4, US_ARNG,                            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, QK_MAKE, XXXXXXX,
+        XXXXXXX,   KC_F5,   KC_F6,   KC_F7,   KC_F8, US_ADIA,                            XXXXXXX, KC_RCTL, KC_RALT, KC_RGUI, KC_RSFT, XXXXXXX,
+        XXXXXXX,   KC_F9,  KC_F10,  KC_F11,  KC_F12, US_ODIA,                            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                                             XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, _______
     ),
 
