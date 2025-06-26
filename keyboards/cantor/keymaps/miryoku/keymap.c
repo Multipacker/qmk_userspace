@@ -1,5 +1,5 @@
-// Copyright 2022 Diego Palacios (@diepala)
-// SPDX-License-Identifier: GPL-2.0
+// Copyright 2025 Simon Renhult (simon.renhult@hotmail.se)
+// SPDX-License-Identifier: MIT
 
 #include QMK_KEYBOARD_H
 
@@ -9,7 +9,6 @@ enum {
     L_Num,
     L_Mouse,
     L_Nav,
-    L_Sym,
     L_Media,
 };
 
@@ -29,13 +28,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       *                   └───┘   └───┘
       */
     [L_Base] = LAYOUT_split_3x6_3(
-        XXXXXXX,         KC_Q,         KC_W,         KC_E,              KC_R,                KC_T,                                                             KC_Y,              KC_U,         KC_I,         KC_O,             KC_P, XXXXXXX,
-        XXXXXXX, LSFT_T(KC_A), LGUI_T(KC_S), LALT_T(KC_D),      LCTL_T(KC_F),                KC_G,                                                             KC_H,      RCTL_T(KC_J), RALT_T(KC_K), RGUI_T(KC_L),  RSFT_T(KC_SCLN), XXXXXXX,
-        XXXXXXX,         KC_Z,         KC_X,         KC_C,              KC_V,                KC_B,                                                             KC_N,              KC_M,      KC_COMM,       KC_DOT,          KC_SLSH, XXXXXXX,
-                                                           LT(L_Num, KC_ESC), LT(L_Mouse, KC_SPC), LT(L_Nav, KC_TAB),          RSFT_T(KC_ENT), LT(L_Media, KC_BSPC), LT(L_Fun, KC_DEL)
+        XXXXXXX,         KC_Q,         KC_W,         KC_E,              KC_R,              KC_T,                                                               KC_Y,              KC_U,         KC_I,         KC_O,             KC_P, XXXXXXX,
+        XXXXXXX, LSFT_T(KC_A), LGUI_T(KC_S), LALT_T(KC_D),      LCTL_T(KC_F),              KC_G,                                                               KC_H,      RCTL_T(KC_J), RALT_T(KC_K), RGUI_T(KC_L),  RSFT_T(KC_SCLN), XXXXXXX,
+        XXXXXXX,         KC_Z,         KC_X,         KC_C,              KC_V,              KC_B,                                                               KC_N,              KC_M,      KC_COMM,       KC_DOT,          KC_SLSH, XXXXXXX,
+                                                           LT(L_Nav, KC_ESC), LT(L_Num, KC_SPC), LT(L_Mouse, KC_TAB),          LT(L_Media, KC_ENT), RSFT_T(KC_BSPC), LT(L_Fun, KC_DEL)
     ),
 
-     /* Numbers
+     /* Numbers & symbols
       * ┌───┬───┬───┬───┬───┐       ┌───┬───┬───┬───┬───┐
       * │MKE│   │   │   │   │       │[{ │7& │8* │9( │-_ │
       * ├───┼───┼───┼───┼───┤       ├───┼───┼───┼───┼───┤
@@ -50,10 +49,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       *                   └───┘   └───┘
       */
     [L_Num] = LAYOUT_split_3x6_3(
-        XXXXXXX, QK_MAKE, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                          KC_LBRC,    KC_7, KC_8, KC_9, KC_MINS, XXXXXXX,
-        XXXXXXX, KC_LSFT, KC_LGUI, KC_LALT, KC_LCTL, XXXXXXX,                          KC_RBRC,    KC_4, KC_5, KC_6,  KC_EQL, XXXXXXX,
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                          KC_BSLS,    KC_1, KC_2, KC_3,  KC_GRV, XXXXXXX,
-                                            _______, XXXXXXX, XXXXXXX,         KC_ENT,   KC_0, XXXXXXX
+        XXXXXXX, QK_MAKE, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                          KC_LBRC,   KC_7, KC_8, KC_9, KC_MINS, XXXXXXX,
+        XXXXXXX, KC_LSFT, KC_LGUI, KC_LALT, KC_LCTL, XXXXXXX,                          KC_RBRC,   KC_4, KC_5, KC_6,  KC_EQL, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                          KC_BSLS,   KC_1, KC_2, KC_3, KC_QUOT, XXXXXXX,
+                                            _______, XXXXXXX, XXXXXXX,         KC_ENT,    KC_0, KC_GRV
     ),
 
      /* Mouse
@@ -119,34 +118,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                             XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, _______
     ),
 
-     /* Symbols
-      * ┌───┬───┬───┬───┬───┐       ┌───┬───┬───┬───┬───┐
-      * │   │   │   │   │   │       │   │   │   │   │MKE│
-      * ├───┼───┼───┼───┼───┤       ├───┼───┼───┼───┼───┤
-      * │   │   │   │   │   │       │   │Ctl│Alt│GUI│Sft│
-      * ├───┼───┼───┼───┼───┤       ├───┼───┼───┼───┼───┤
-      * │   │   │   │   │   │       │   │   │   │   │   │
-      * └───┴───┴───┴───┴───┘       └───┴───┴───┴───┴───┘
-      *           ┌───┐                   ┌───┐
-      *           │   ├───┐           ┌───┤   │
-      *           └───┤   ├───┐   ┌───┤Hld├───┘
-      *               └───┤   │   │   ├───┘
-      *                   └───┘   └───┘
-      */
-    [L_Sym] = LAYOUT_split_3x6_3(
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, QK_MAKE, XXXXXXX,
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                            XXXXXXX, KC_RCTL, KC_RALT, KC_RGUI, KC_RSFT, XXXXXXX,
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-                                            XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, _______, XXXXXXX
-    ),
-
      /* Meida
       * ┌───┬───┬───┬───┬───┐       ┌───┬───┬───┬───┬───┐
       * │   │   │   │   │   │       │   │   │   │   │MKE│
       * ├───┼───┼───┼───┼───┤       ├───┼───┼───┼───┼───┤
-      * │Prv│Vl-│Vl+│Nxt│   │       │   │Ctl│Alt│GUI│Sft│
+      * │   │Prv│Ply│Nxt│   │       │   │Ctl│Alt│GUI│Sft│
       * ├───┼───┼───┼───┼───┤       ├───┼───┼───┼───┼───┤
-      * │   │   │   │   │   │       │   │   │   │   │   │
+      * │   │Vl+│Mut│Vl-│   │       │   │   │   │   │   │
       * └───┴───┴───┴───┴───┘       └───┴───┴───┴───┴───┘
       *           ┌───┐                   ┌───┐
       *           │   ├───┐           ┌───┤   │
