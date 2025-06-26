@@ -1,6 +1,7 @@
 {
     "userspace_version": "1.1",
     "build_targets": [
-        ["cantor", "miryoku"]
+        ["cantor", "miryoku"],
+        ["planck/rev6", "first"]
     ]
 }

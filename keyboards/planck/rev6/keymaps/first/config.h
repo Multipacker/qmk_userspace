@@ -1,0 +1,4 @@
+#define ENABLE_COMPILE_KEYCODE
+
+#define NO_DEBUG
+#define NO_PRINT
