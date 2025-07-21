@@ -11,7 +11,7 @@ enum {
     L_Num,
     L_Mouse,
     L_Nav,
-    L_Media,
+    L_Sym,
     L_Game,
     L_GameSnd,
 };
@@ -45,19 +45,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       *                   └───┘   └───┘
       */
     [L_Base] = split_layout(
-                KC_Q,         KC_W,         KC_E,              KC_R,              KC_T,                                                               KC_Y,              KC_U,         KC_I,         KC_O,             KC_P,
-        LSFT_T(KC_A), LGUI_T(KC_S), LALT_T(KC_D),      LCTL_T(KC_F),              KC_G,                                                               KC_H,      RCTL_T(KC_J), RALT_T(KC_K), RGUI_T(KC_L),  RSFT_T(KC_SCLN),
-                KC_Z,         KC_X,         KC_C,              KC_V,              KC_B,                                                               KC_N,              KC_M,      KC_COMM,       KC_DOT,          KC_SLSH,
-                                                  LT(L_Nav, KC_ESC), LT(L_Num, KC_SPC), LT(L_Mouse, KC_TAB),          LT(L_Media, KC_ENT), RSFT_T(KC_BSPC), LT(L_Fun, KC_DEL)
+                KC_Q,         KC_W,         KC_E,              KC_R,              KC_T,                                                             KC_Y,              KC_U,         KC_I,         KC_O,             KC_P,
+        LSFT_T(KC_A), LGUI_T(KC_S), LALT_T(KC_D),      LCTL_T(KC_F),              KC_G,                                                             KC_H,      RCTL_T(KC_J), RALT_T(KC_K), RGUI_T(KC_L),  RSFT_T(KC_SCLN),
+                KC_Z,         KC_X,         KC_C,              KC_V,              KC_B,                                                             KC_N,              KC_M,      KC_COMM,       KC_DOT,          KC_SLSH,
+                                                  LT(L_Nav, KC_ESC), LT(L_Num, KC_SPC), LT(L_Mouse, KC_TAB),          LT(L_Sym, KC_ENT), RSFT_T(KC_BSPC), LT(L_Fun, KC_DEL)
     ),
 
      /* Numbers & symbols
       * ┌───┬───┬───┬───┬───┐       ┌───┬───┬───┬───┬───┐
-      * │MKE│Gam│   │   │   │       │[{ │7& │8* │9( │-_ │
+      * │MKE│Gam│   │   │   │       │   │7& │8* │9( │-_ │
       * ├───┼───┼───┼───┼───┤       ├───┼───┼───┼───┼───┤
-      * │Sft│GUI│Alt│Ctl│   │       │}] │4$ │5% │6^ │=+ │
+      * │Sft│GUI│Alt│Ctl│   │       │   │4$ │5% │6^ │=+ │
       * ├───┼───┼───┼───┼───┤       ├───┼───┼───┼───┼───┤
-      * │   │   │   │   │   │       │\| │1! │2@ │3# │`~ │
+      * │   │   │   │   │   │       │   │1! │2@ │3# │   │
       * └───┴───┴───┴───┴───┘       └───┴───┴───┴───┴───┘
       *           ┌───┐                   ┌───┐
       *           │   ├───┐           ┌───┤   │
@@ -66,10 +66,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       *                   └───┘   └───┘
       */
     [L_Num] = split_layout(
-        QK_MAKE, TO(L_Game), XXXXXXX, XXXXXXX, XXXXXXX,                          KC_LBRC,   KC_7, KC_8, KC_9, KC_MINS,
-        KC_LSFT,    KC_LGUI, KC_LALT, KC_LCTL, XXXXXXX,                          KC_RBRC,   KC_4, KC_5, KC_6,  KC_EQL,
-        XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                          KC_BSLS,   KC_1, KC_2, KC_3, KC_QUOT,
-                                      _______, XXXXXXX, XXXXXXX,         KC_ENT,    KC_0, KC_GRV
+        QK_MAKE, TO(L_Game), XXXXXXX, XXXXXXX, XXXXXXX,                          XXXXXXX,    KC_7, KC_8, KC_9, KC_MINS,
+        KC_LSFT,    KC_LGUI, KC_LALT, KC_LCTL, XXXXXXX,                          XXXXXXX,    KC_4, KC_5, KC_6,  KC_EQL,
+        XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                          XXXXXXX,    KC_1, KC_2, KC_3, XXXXXXX,
+                                      XXXXXXX, _______, XXXXXXX,        XXXXXXX,    KC_0, XXXXXXX
     ),
 
      /* Mouse
@@ -90,7 +90,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         QK_MAKE, TO(L_Game), XXXXXXX, XXXXXXX, XXXXXXX,                           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
         KC_LSFT,    KC_LGUI, KC_LALT, KC_LCTL, XXXXXXX,                           MS_LEFT, MS_DOWN,   MS_UP, MS_RGHT, XXXXXXX,
         XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                           MS_WHLL, MS_WHLD, MS_WHLU, MS_WHLR, XXXXXXX,
-                                      XXXXXXX, _______, XXXXXXX,         MS_BTN3, MS_BTN1, MS_BTN2
+                                      XXXXXXX, XXXXXXX, _______,         MS_BTN3, MS_BTN1, MS_BTN2
     ),
 
      /* Navigation
@@ -102,16 +102,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       * │   │   │   │   │   │       │Hme│Dwn│Up │End│   │
       * └───┴───┴───┴───┴───┘       └───┴───┴───┴───┴───┘
       *           ┌───┐                   ┌───┐
-      *           │Hld├───┐           ┌───┤   │
-      *           └───┤   ├───┐   ┌───┤   ├───┘
-      *               └───┤   │   │   ├───┘
+      *           │Hld├───┐           ┌───┤Nxt│
+      *           └───┤   ├───┐   ┌───┤Ply├───┘
+      *               └───┤   │   │Prv├───┘
       *                   └───┘   └───┘
       */
     [L_Nav] = split_layout(
         QK_MAKE, TO(L_Game), XXXXXXX, XXXXXXX, XXXXXXX,                           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
         KC_LSFT,    KC_LGUI, KC_LALT, KC_LCTL, XXXXXXX,                           KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, XXXXXXX,
         XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                           KC_HOME, KC_PGDN, KC_PGUP,  KC_END, XXXXXXX,
-                                      XXXXXXX, XXXXXXX, _______,         XXXXXXX, XXXXXXX, XXXXXXX
+                                      _______, XXXXXXX, XXXXXXX,         KC_MPRV, KC_MPLY, KC_MNXT
     ),
 
      /* Function
@@ -132,28 +132,28 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           KC_F1,   KC_F2,   KC_F3,   KC_F4, US_ARNG,                            XXXXXXX, XXXXXXX, XXXXXXX, TO(L_Game), QK_MAKE,
           KC_F5,   KC_F6,   KC_F7,   KC_F8, US_ADIA,                            XXXXXXX, KC_RCTL, KC_RALT,    KC_RGUI, KC_RSFT,
           KC_F9,  KC_F10,  KC_F11,  KC_F12, US_ODIA,                            XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX,
-                                   XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, _______
+                                   XXXXXXX, XXXXXXX, XXXXXXX,          _______, XXXXXXX, XXXXXXX
     ),
 
-     /* Meida
+     /* Symbols
       * ┌───┬───┬───┬───┬───┐       ┌───┬───┬───┬───┬───┐
-      * │   │   │   │   │   │       │   │   │   │Gam│MKE│
+      * │ ! │ @ │ # │ $ │ % │       │   │   │   │Gam│MKE│
       * ├───┼───┼───┼───┼───┤       ├───┼───┼───┼───┼───┤
-      * │   │Prv│Ply│Nxt│   │       │   │Ctl│Alt│GUI│Sft│
+      * │ ( │ ) │ { │ } │ ^ │       │   │Ctl│Alt│GUI│Sft│
       * ├───┼───┼───┼───┼───┤       ├───┼───┼───┼───┼───┤
-      * │   │Vl+│Mut│Vl-│   │       │   │   │   │   │   │
+      * │ [ │ ] │   │ * │ & │       │   │   │   │   │   │
       * └───┴───┴───┴───┴───┘       └───┴───┴───┴───┴───┘
       *           ┌───┐                   ┌───┐
-      *           │   ├───┐           ┌───┤   │
-      *           └───┤   ├───┐   ┌───┤   ├───┘
-      *               └───┤   │   │Hld├───┘
+      *           │`~ ├───┐           ┌───┤   │
+      *           └───┤'" ├───┐   ┌───┤   ├───┘
+      *               └───┤\| │   │Hld├───┘
       *                   └───┘   └───┘
       */
-    [L_Media] = split_layout(
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                            XXXXXXX, XXXXXXX, XXXXXXX, TO(L_Game), QK_MAKE,
-        XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX,                            XXXXXXX, KC_RCTL, KC_RALT,    KC_RGUI, KC_RSFT,
-        XXXXXXX, KC_VOLD, KC_MUTE, KC_VOLU, XXXXXXX,                            XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX,
-                                   XXXXXXX, XXXXXXX, XXXXXXX,          _______, XXXXXXX, XXXXXXX
+    [L_Sym] = split_layout(
+        KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC,                            XXXXXXX, XXXXXXX, XXXXXXX, TO(L_Game), QK_MAKE,
+        KC_LPRN, KC_RPRN, KC_LCBR, KC_RCBR, KC_CIRC,                            XXXXXXX, KC_RCTL, KC_RALT,    KC_RGUI, KC_RSFT,
+        KC_LBRC, KC_RBRC, XXXXXXX, KC_ASTR, KC_AMPR,                            XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX,
+                                    KC_GRV, KC_QUOT, KC_BSLS,          XXXXXXX, XXXXXXX, _______
     ),
 
      /* Game
